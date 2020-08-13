@@ -4,15 +4,15 @@ public class Hospital
   static String name="General Hospital";
  public void availability(boolean avail)
   {
-  if(avail==true)
-    {
-    System.out.println("\nRoom available to use");
-    } 
-  else
-    {
-    System.out.println("\nRoom unavailable at the moment");
-    }
-   }
+    if(avail==true)
+     {
+     System.out.println("\nRoom available to use");
+     } 
+    else
+     {
+     System.out.println("\nRoom unavailable at the moment");
+     }
+  }
 
   public void doctors_present(String doc)
   {
@@ -31,18 +31,18 @@ public static void main(String args[]) throws IOException
     switch(ch)
     {
     case 1:
-    System.out.println("\nDoctor Records");
-    for(int i=0; i<doctor.length; i++)
-    {
-      hosp.doctors_present(doctor[i]);
-    }
-    break;
+        System.out.println("\nDoctor Records");
+        for(int i=0; i<doctor.length; i++)
+        {
+          hosp.doctors_present(doctor[i]);
+        }
+        break;
     case 2:
-    System.out.println("\nRooms Available: ");
-    for( int i=0; i<roomavailable.length; i++)
-    {
-      hosp.availability(roomavailable[i]);
-    }
+        System.out.println("\nRooms Available: ");
+        for( int i=0; i<roomavailable.length; i++)
+        {
+          hosp.availability(roomavailable[i]);
+        }
   break;
   }
  }
