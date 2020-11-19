@@ -1,49 +1,28 @@
-import java.io.*;
-public class Hospital 
+package pck;
+interface AbstractClass
 {
-  static String name="General Hospital";
- public void availability(boolean avail)
-  {
-    if(avail==true)
-     {
-     System.out.println("\nRoom available to use");
-     } 
-    else
-     {
-     System.out.println("\nRoom unavailable at the moment");
-     }
-  }
-
-  public void doctors_present(String doc)
-  {
-    System.out.println("\nDoctors working in the hospital: "+doc);
-  }
-  
-public static void main(String args[]) throws IOException
-  {
-    boolean[] roomavailable={true, true, false, true, false, true, true};
-    String[] doctor={"Dr.Raj", "Dr.Kannan", "Dr.John", "Dr.Ahamed"};
-    DataInputStream dr= new DataInputStream(System.in);
-    Hospital hosp= new Hospital();
-    System.out.println("\n\t"+hosp.name+"\t\n");
-    System.out.println("\nHospital Records Details.\n Enter 1 to view to view doctor records\n Enter 2 to check room availability\n ");
-    int ch=Integer.parseInt(dr.readLine());
-    switch(ch)
-    {
-    case 1:
-        System.out.println("\nDoctor Records");
-        for(int i=0; i<doctor.length; i++)
-        {
-          hosp.doctors_present(doctor[i]);
-        }
-        break;
-    case 2:
-        System.out.println("\nRooms Available: ");
-        for( int i=0; i<roomavailable.length; i++)
-        {
-          hosp.availability(roomavailable[i]);
-        }
-  break;
-  }
- }
+  void shows();
+}
+public class Hospital implements AbstractClass
+{	StringBuffer name=new StringBuffer("Odyssey");
+	final int branches=2;
+	static String opentimings="10 to 10";
+	static int areacode;
+	String address= new String("14, near Palanganatham Bus stand, Madurai");
+	static
+	{
+	  areacode=625003;
+	}
+	public void shows()
+	{
+	  System.out.println("\nHospital Details\n Hospital was founded in December 1978 by Dr.Maadhavan. He worked as chief doctor in Government hospital.");
+	  System.out.println("\nHe quit his job there and opened a small clinic that grew into a big multi-speciality hospital it is today.");
+	  System.out.println("\nThe number of braches is "+branches);
+	  System.out.println("\nDue to his popularity, he opened another hospital-New Order Hospital");
+	  System.out.println("\nThis hospital has comparitively less rates than other multi-speciality hospitals with the same resources.");
+	  System.out.println("\nThe hospital is located at "+address);
+	  System.out.println("  Area code is "+areacode);
+	  System.out.println("\nThe hospital is famous for its pediatric ward and orthopoedic ward.");
+	  System.out.println("\nThe hospital is open from "+opentimings);
+	}
 }
