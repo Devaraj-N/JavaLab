@@ -66,6 +66,21 @@ class InvalidPasswordException extends Exception
 	super(s);
      }
 }
+class Treatments extends Thread
+{
+  public void run()
+  {
+    System.out.println("\nThere are three classifications of medical treatment: \n* Curative- to cure a patient of an illness \n* Palliative- to relieve symptoms from an illness \n* Preventative- to avoid the onset of an illness.\n The doctors also recommend an etymology treatment, like antibiotics to treat strep throat, for example. To relieve pain in this case, the treatment can be accompanied by a symptomatic treatment like an antalgic.");
+   }
+}
+class Other_Treatments implements Runnable
+{
+  public void run()
+    {
+      System.out.println("\nTreatments prescribed by doctors can be classified using one or several of the following methods: Medical, surgical, or medico techniques. A medical treatment generally prescribes diet and lifestyle measures, like changing certain habits, as well as medication intake, whether injectable or not. Physical therapy, speech therapy, psychiatry, and physiotherapy are equally part of medical treatments. For certain illnesses, it is necessary to resort to surgical treatment. Certain examinations are situated between traditional treatments and surgery, such as, radiology, endoscopy, and phototherapy.");
+     System.out.println("\nTo heal, relieve, or prevent an illness, health professionals can resort to other specific methods. In any case, observation is an integral part of treatment, like regularly examining blood pressure, or asking for an X-ray. In non-conventional medicine, certain therapies and techniques, like acupuncture, balneotherapy, taking supplements, detoxification, or homeopathy, can also be prescribed.\n");
+   }
+}
 public class HospitalRecords
 {
   static void validate(String s) throws InvalidPasswordException
@@ -93,7 +108,7 @@ public class HospitalRecords
 	  System.exit(0);
 	}
 	System.out.println("\n\t"+Doctor.hname+"\t\n");
-	System.out.println("\nHospital Records Details.\n Enter 1 to Enter doctor records\n Enter 2 to know about the Hospital \nEnter 3 to change hospital name \nEnter 4 to know about hospital rates \nEnter 5 to display user information\nEnter 6 to exit");
+	 System.out.println("\nHospital Records Details.\nEnter 1 to Enter doctor records \nEnter 2 to know about the Hospital \nEnter 3 to change hospital name \nEnter 4 to know about hospital rates \nEnter 5 to display user information \nEnter 6 to know about Treatment Methods \nEnter 7 to exit");
 	int ch=Integer.parseInt(dr.readLine());
 	switch(ch)
 	{
@@ -150,9 +165,20 @@ public class HospitalRecords
 	   System.out.println("\n"+args[i]);
 	}
 	break;
-
+	
 	case 6:
+	 Treatments tr=new Treatments();
+	  Other_Treatments otr= new Other_Treatments();
+	  Thread t1=new Thread(otr);
+	   tr.setPriority(Thread.MAX_PRIORITY);
+	   t1.setPriority(Thread.MIN_PRIORITY);
+  	   tr.start();
+	   t1.start();
+   	   break;
+
+	case 7:
 	  System.exit(0);
 	}
+        
     }
 }
