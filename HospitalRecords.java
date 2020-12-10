@@ -1,6 +1,8 @@
 import java.io.*;
 import java.lang.*;
+import java.util.*;
 import pck.Hospital;
+import pck.Ortho;
 /*interface display
 {
  public abstract void show();
@@ -94,7 +96,7 @@ public class HospitalRecords
     }
     public static void main(String args[]) throws IOException
     {
-	int age, exp;
+	int dage, exp;
 	String name, field, pass;
 	DataInputStream dr= new DataInputStream(System.in);
 	try
@@ -108,7 +110,7 @@ public class HospitalRecords
 	  System.exit(0);
 	}
 	System.out.println("\n\t"+Doctor.hname+"\t\n");
-	 System.out.println("\nHospital Records Details.\nEnter 1 to Enter doctor records \nEnter 2 to know about the Hospital \nEnter 3 to change hospital name \nEnter 4 to know about hospital rates \nEnter 5 to display user information \nEnter 6 to know about Treatment Methods \nEnter 7 to exit");
+	 System.out.println("\nHospital Records Details.\nEnter 1 to Enter doctor records \nEnter 2 to know about the Hospital \nEnter 3 to change hospital name \nEnter 4 to know about hospital rates \nEnter 5 to display user information \nEnter 6 to know about Treatment Methods \n Enter 7 to recieve Orthopeadic Treatment\nEnter 8 to exit");
 	int ch=Integer.parseInt(dr.readLine());
 	switch(ch)
 	{
@@ -127,7 +129,7 @@ public class HospitalRecords
 	  System.out.println("\nEnter Doctor Field: ");
 	  field=dr.readLine();
 	  System.out.println("\nEnter Doctor Age: ");
-	  age=Integer.parseInt(dr.readLine());
+	  dage=Integer.parseInt(dr.readLine());
 	  try 
 	   {
 	    System.out.println("\nEnter years of experience: ");
@@ -137,10 +139,10 @@ public class HospitalRecords
 	   {
 	       System.out.println("\nExperience must be a number");
 	   }
-	  Doctor doc=new Doctor(name, field, age);
-	  doc.set(name, field, age);
+	  Doctor doc=new Doctor(name, field, dage);
+	  doc.set(name, field, dage);
 	  doc.show(name, field);
-	  doc.show(age);
+	  doc.show(dage);
 	  //System.out.println("\nExperience: "+exp);
 	break;
 	
@@ -175,8 +177,37 @@ public class HospitalRecords
   	   tr.start();
 	   t1.start();
    	   break;
-
+	
 	case 7:
+	 System.out.println("\nEnter number of patients: ");
+	 int n=Integer.parseInt(dr.readLine());
+	 ArrayList<Ortho> orl=new ArrayList<Ortho>();
+	 for(int i=0; i<n; i++)
+	  {
+	   System.out.println("\nEnter Patient name: ");
+	   String pname=dr.readLine();
+	   System.out.println("\nEnter Patient age: ");
+	   int age=Integer.parseInt(dr.readLine());
+	   System.out.println("\nEnter Patient's ailment: ");
+	   String ailment=dr.readLine();
+	   System.out.println("\nEnter Patient's cause for pain: ");
+	   String cause=dr.readLine();
+	   Ortho ot=new Ortho(pname, age, ailment, cause);
+	   orl.add(ot);
+	   ot.show();
+	  }
+	  Iterator itr=orl.iterator();
+	  while(itr.hasNext())
+	  {
+	    Ortho or=(Ortho)itr.next();
+	    System.out.println("\nPatient Name: "+or.pname);
+	    System.out.println("\nPatient Age: "+or.age);
+	    System.out.println("\nPatient Ailment: "+or.ailment);
+	    System.out.println("\nPatient Cause for Pain: "+or.cause);
+	  }
+	  break;
+	  
+	case 8:
 	  System.exit(0);
 	}
         
